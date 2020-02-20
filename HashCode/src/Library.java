@@ -2,12 +2,38 @@ import java.util.TreeSet;
 
 public class Library {
     private TreeSet<Book> bookSet;
+
+    private int id;
+    private int totalBooks;
     private int time;
     private int booksByDay;
 
-    public Library(int time, int booksByDay) {
+    public Library() {
+        this.bookSet = new TreeSet<>();
+    }
+
+    public Library(int id, int time, int booksByDay) {
+        this.id = id;
         this.time = time;
         this.booksByDay = booksByDay;
+    }
+
+    @Override
+    public String toString() {
+        String result = "LIBRARY " + id;
+        result += "\ntotal Books : " + totalBooks;
+        result += "\ntime : " + time;
+        result += "\nbooksByDay " + booksByDay;
+
+        for (Book book : this.bookSet) {
+            result += "\n" + book.toString();
+        }
+
+        return result;
+    }
+
+    public int getTotalBooks() {
+        return totalBooks;
     }
 
     public int getTime() {
@@ -16,6 +42,22 @@ public class Library {
 
     public int getBooksByDay() {
         return booksByDay;
+    }
+
+    public void setTotalBooks(int totalBooks) {
+        this.totalBooks = totalBooks;
+    }
+
+    public void setBooksByDay(int booksByDay) {
+        this.booksByDay = booksByDay;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
+    }
+
+    public void setBookSet(TreeSet<Book> bookSet) {
+        this.bookSet = bookSet;
     }
 
     public boolean addBook(Book book) {
