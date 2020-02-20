@@ -1,7 +1,7 @@
 import java.util.TreeSet;
 
 public class Library implements Comparable<Library> {
-    private TreeSet<Book> bookSet;
+    public TreeSet<Book> bookSet;
 
     private int ratio;
     private int id;
@@ -18,7 +18,11 @@ public class Library implements Comparable<Library> {
         this.time = time;
         this.booksByDay = booksByDay;
     }
+	
 
+	public int getId(){
+		return this.id;
+	}
     @Override
     public int compareTo(Library library) {
         return (this.ratio < library.ratio) ? -1 : (this.ratio > library.ratio) ? + 1 : 0;
@@ -97,4 +101,6 @@ public class Library implements Comparable<Library> {
             this.ratio = 0;
         }
     }
+    
+   
 }

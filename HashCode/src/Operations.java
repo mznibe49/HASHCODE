@@ -1,5 +1,5 @@
 import java.io.BufferedReader;
-import java.io.File;
+import java.io.*;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -7,12 +7,12 @@ import java.util.Collections;
 import java.util.HashMap;
 
 public class Operations {
-    private int totalBooks;
+    public int totalBooks;
     private int totalLibraries;
     private int days;
 
     private ArrayList<Integer> bookScore;
-    private ArrayList<Library> libraries;
+    public ArrayList<Library> libraries;
 
     public Operations() {
         this.bookScore = new ArrayList<>();
@@ -37,6 +37,46 @@ public class Operations {
         }
 
         return result;
+    }
+    
+    public void subFile(ArrayList<Library> list){
+        
+        try {
+               FileWriter writer = new FileWriter("sub_file.txt");
+               BufferedWriter buffer = new BufferedWriter(writer);
+            buffer.write(list.size()+"\n");
+            int tmp = days;
+            for (Library lib : list){
+                if(tmp-(lib.getTime()+(lib.getTotalBooks()/ lib.getBooksByDay())) > 0 ){
+                    tmp = tmp - (lib.getTime()+(lib.getTotalBooks()/ lib.getBooksByDay())) ;
+                    buffer.write(lib.getId()+" "+lib.getTotalBooks()+"\n");
+                    for(Book book : lib.bookSet){
+                        buffer.write(book.getId()+" ");
+                    }
+                    buffer.write("\n");
+                }else if (tmp > 0){
+                    buffer.write(lib.getId()+" "+lib.getTotalBooks()+"\n");
+                    int tmp2 = tmp * lib.getBooksByDay();
+                    int cpt2 = 0;
+                    for(Book book : lib.bookSet){
+                        buffer.write(book.getId()+" ");
+                        cpt2++;
+                        if(cpt2 == tmp2){
+                            break;
+                        }
+                        
+                    }
+                    buffer.write("\n");
+                }else{
+                    break;
+                }
+            }
+               //buffer.write("Welcome to javaTpoint.");
+               buffer.close();
+               System.out.println("Success");
+        } catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     public void parseInput(String fileName) {
