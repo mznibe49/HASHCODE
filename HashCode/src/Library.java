@@ -3,6 +3,7 @@ import java.util.TreeSet;
 public class Library {
     private TreeSet<Book> bookSet;
 
+    private int ratio;
     private int id;
     private int totalBooks;
     private int time;
@@ -80,7 +81,7 @@ public class Library {
 		return total;
 	}
     
-    public float getRatio(){
-        retun getLibScore()/(getTime()+(totalBooks/booksByDay));
+    public void getRatio(){
+        this.ratio = getLibScore()/(getTime()+(totalBooks/booksByDay));
     }
 }
