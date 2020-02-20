@@ -11,11 +11,11 @@ public class Operations {
     private int days;
 
     private ArrayList<Integer> bookScore;
-    private HashMap<Integer, Library> libraries;
+    private ArrayList<Library> libraries;
 
     public Operations() {
         this.bookScore = new ArrayList<>();
-        this.libraries = new HashMap<>();
+        this.libraries = new ArrayList<>();
     }
 
     @Override
@@ -30,10 +30,9 @@ public class Operations {
             result += index.toString() + " ";
         }
 
-        int i = totalLibraries;
-        while(i-- != 0) {
+        for (Library library : libraries) {
             result += "\n\n";
-            result += libraries.get(i).toString();
+            result += library.toString();
         }
 
         return result;
@@ -107,7 +106,8 @@ public class Operations {
                         }
                         flag = 0;
 
-                        this.libraries.put(currentLibraryId, library);
+                        // this.libraries.put(currentLibraryId, library);
+                        this.libraries.add(library);
 
                         cpt++;
                         break;
@@ -128,5 +128,10 @@ public class Operations {
         }
     }
 
+    public void setAllRatios() {
+        for (Library library : libraries) {
+            library.setRatio();
+        }
+    }
 
 }
