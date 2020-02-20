@@ -3,6 +3,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 public class Operations {
@@ -90,18 +91,20 @@ public class Operations {
                         library.setId(currentLibraryId);
 
                         for (String value : stringArray) {
-                            switch (flag) {
-                                case (0) :
-                                    library.setTotalBooks(Integer.parseInt(value));
-                                    flag++;
-                                    break;
-                                case (1) :
-                                    library.setTime(Integer.parseInt(value));
-                                    flag++;
-                                    break;
-                                case (2) :
-                                    library.setBooksByDay(Integer.parseInt(value));
-                                    break;
+                            if (!(value.equals(""))) {
+                                switch (flag) {
+                                    case (0) :
+                                        library.setTotalBooks(Integer.parseInt(value));
+                                        flag++;
+                                        break;
+                                    case (1) :
+                                        library.setTime(Integer.parseInt(value));
+                                        flag++;
+                                        break;
+                                    case (2) :
+                                        library.setBooksByDay(Integer.parseInt(value));
+                                        break;
+                                }
                             }
                         }
                         flag = 0;
@@ -132,6 +135,10 @@ public class Operations {
         for (Library library : libraries) {
             library.setRatio();
         }
+    }
+
+    public void sortLibraries() {
+        Collections.sort(this.libraries);
     }
 
 }

@@ -91,6 +91,10 @@ public class Library implements Comparable<Library> {
     }
 
     public void setRatio(){
-        this.ratio = getLibScore()/(getTime()+(totalBooks/booksByDay));
+        try {
+            this.ratio = getLibScore()/(getTime()+(totalBooks/booksByDay));
+        } catch (Exception e ) {
+            this.ratio = 0;
+        }
     }
 }
