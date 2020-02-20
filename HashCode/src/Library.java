@@ -52,6 +52,10 @@ public class Library {
         this.booksByDay = booksByDay;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public void setTime(int time) {
         this.time = time;
     }

@@ -49,8 +49,6 @@ public class Operations {
             BufferedReader reader = new BufferedReader(new FileReader(new File(fileName)));
 
             while ((line = reader.readLine()) != null) {
-                System.out.println(line);
-
                 String[] stringArray = line.split(" ");
 
                 switch (cpt) {
@@ -74,8 +72,8 @@ public class Operations {
                                 case (2) :
                                     this.days = Integer.parseInt(value);
                                     break;
-
                             }
+                            flag++;
                         }
                         cpt++;
                         flag = 0;
@@ -90,6 +88,7 @@ public class Operations {
 
                     case(2) :
                         Library library = new Library();
+                        library.setId(currentLibraryId);
 
                         for (String value : stringArray) {
                             switch (flag) {
@@ -108,7 +107,6 @@ public class Operations {
                         }
                         flag = 0;
 
-                        System.out.println(library);
                         this.libraries.put(currentLibraryId, library);
 
                         cpt++;
@@ -117,7 +115,7 @@ public class Operations {
                     case(3) :
                         for (String value : stringArray) {
                             Book book = new Book(Integer.parseInt(value), this.bookScore.get(Integer.parseInt(value)));
-                            // this.libraries.get(Integer.valueOf(currentLibraryId)).addBook(book);
+                            this.libraries.get(Integer.valueOf(currentLibraryId)).addBook(book);
                         }
 
                         currentLibraryId++;

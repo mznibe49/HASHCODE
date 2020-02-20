@@ -3,6 +3,6 @@ public class Main {
         Operations operations = new Operations();
         operations.parseInput(args[0]);
 
-        // System.out.println(operations);
+        System.out.println(operations);
     }
 }
