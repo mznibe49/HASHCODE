@@ -75,4 +75,8 @@ public class Library {
 		}
 		return total;
 	}
+    
+    public float getRatio(){
+        retun getLibScore()/(getTime()+(totalBooks/booksByDay));
+    }
 }
