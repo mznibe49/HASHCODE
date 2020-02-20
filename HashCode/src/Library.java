@@ -25,4 +25,12 @@ public class Library {
     public Book getHighest() {
         return this.bookSet.pollLast();
     }
+
+	public int getLibScore(){
+		int total = 0;
+		for (Book b : bookSet){
+			total += b.getScore();
+		}
+		return total;
+	}
 }
