@@ -19,15 +19,25 @@ public class Operations {
 
     private void parseInput(String fileName) {
         try {
+            int flag = 0;
             int cpt = 0;
 
             String line;
             BufferedReader reader = new BufferedReader(new FileReader(new File(fileName)));
 
             while ((line = reader.readLine()) != null) {
-                switch (cpt) {
-                    case (0) :
+                String[] stringArray = line.split(" ");
 
+                switch (cpt) {
+                    /* First line case */
+                    case (0) :
+                        for (String value : stringArray) {
+                            switch (flag) {
+                                /* Books number*/
+                                case (0) :
+                                    
+                            }
+                        }
                 }
             }
         } catch (IOException e) {
